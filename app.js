@@ -3,9 +3,25 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var Survey = require('./models/survey');
+
+mongoose.connect(
+  `mongodb+srv://test:test321@cluster0-kz1st.mongodb.net/test?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true
+  }
+); // Connect to mongo
+
+var db = mongoose.connection;
+db.on('error', err => console.log(err)); // Console log error on mongoose
+db.once('open', () => {
+  console.log('Connected to mongodb');
+});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var surveysRouter = require('./routes/surveys'); // Require in surveys
 
 var app = express();
 
@@ -19,6 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/surveys', surveysRouter); // On surveys route - use surveys router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
