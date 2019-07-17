@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const surveySchema = new Schema({
-  title: String,
-  datePosted: Date,
+  title: { type: String, required: true },
   content: String,
+  date: Date,
   authors: [String],
   hero: String
 });

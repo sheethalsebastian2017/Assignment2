@@ -4,7 +4,7 @@ const Survey = require('../models/survey');
 
 router.get('/', (req, res) => {
   Survey.find().then(surveys => {
-    res.render('surveys/list', { surveys, title: 'the JungleBook' });
+    res.render('surveys/list', { surveys, title: 'The Survey Page' });
     // res.json(surveys);
   });
 });

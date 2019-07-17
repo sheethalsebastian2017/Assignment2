@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var Survey = require('./models/survey');
 
 mongoose.connect(
-  `mongodb+srv://test:test321@cluster0-kz1st.mongodb.net/test?retryWrites=true&w=majority`,
+  `mongodb+srv://test:test456@cluster0-kz1st.mongodb.net/test?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true
   }
